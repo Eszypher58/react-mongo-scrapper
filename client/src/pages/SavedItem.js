@@ -1,10 +1,10 @@
 import React from "react";
-//import HomeItemSaveButton from "./HomeItemSaveButton";
+//import SavedItemRemoveButton from "./SavedItemRemoveButton";
 
-const HomeItem = (props) => {
+const SavedItem = (props) => {
 
     return (
-        
+
         <div className="media">
             <div className="media-left">
                 <a target="_black" href={props.url}>
@@ -14,14 +14,15 @@ const HomeItem = (props) => {
             <div className="media-body">
                 <h4 className="media-heading">{props.title}</h4>
                 <h5>{props.date}</h5>
-                <p>{props.summry}</p>
-                <button className="btn btn-success saveButton" data_value={props._id} onClick={props.save}>Save Article</button>
+                <p>{props.summary}</p>
+                <button className="btn btn-success noteButton" data_value={props._id}>Article Note</button>
+                <button className="btn btn-danger removeButton" data_value={props._id} onClick={props.remove}>Remove Article</button>
             </div>
         </div>
 
-)
+    )
 
 
 }
 
-export default HomeItem;
+export default SavedItem;

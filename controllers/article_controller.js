@@ -19,7 +19,8 @@ router.post("/save/:id", function(req, res){
 
     db.Article.findByIdAndUpdate(id, { $set: {saved: true}}, function(err, data){
 
-        res.redirect(req.get('referer'));
+        //res.redirect(req.get('referer'));
+        res.json("saved article: " + id);
 
     })
 
@@ -37,19 +38,21 @@ router.post("/remove/:id", function(req, res){
     
         db.Article.findByIdAndUpdate(id, { $set: {saved: false}}, function(err, data){
     
-            res.redirect(req.get('referer'));
+            //res.redirect(req.get('referer'));
+            res.json("removed article:" + id);
     
         })
     
 });
 
-router.get("/save", function(req, res){
+router.get("/saved", function(req, res){
     
         console.log("hit /save with get");
     
         db.Article.find({ saved: true}, function(err, data){
     
-            res.render("save",{data: data});
+            //res.render("save",{data: data});
+            res.json(data);
     
         })
     

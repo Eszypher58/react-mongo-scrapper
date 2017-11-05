@@ -42,7 +42,7 @@ router.get("/display", function(req, res){
 
     db.Article.find({}).then(function(data){
 
-        console.log(data);
+        //console.log(data);
         //res.render("article",{data: data});
         res.json(data);
 
@@ -118,8 +118,14 @@ router.get("/populate", function(req, res){
 
                             //console.log(dbArticle);
                             //res.redirect("/");
+                            //res.end();
+                            res.json("create new entry");
 
                         })
+
+                    } else {
+
+                        res.json("entry in db already");
 
                     }
 

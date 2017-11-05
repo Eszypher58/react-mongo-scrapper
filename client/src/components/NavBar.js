@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
+import NavBarPopulate from "./NavBarPopulate"
 
 const NavBar = () => {
 
-    return (
 
+    return (
         <nav className="navbar navbar-inverse titlebar">
         <div className="container">
 
@@ -16,9 +17,7 @@ const NavBar = () => {
                   <li><a href="/save">Saved Article</a></li>
               </ul>
 
-              <ul className="nav navbar-nav navbar-right">
-                  <li><button className="btn btn-warning" id="populate">Populate Articles</button></li>
-              </ul>
+              <NavBarPopulate />
 
           </div>
       </nav>
