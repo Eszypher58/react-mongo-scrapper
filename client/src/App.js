@@ -17,8 +17,8 @@ class App extends Component {
         <div id="img1">
           <NavBar />
           <div className="headerblock">
-                <h1>Mongo Scraper</h1>
-                <p>A Nature Scraper with Community Comment</p>
+                <h1>React Mongoose Scraper</h1>
+                <p>React Nature Scraper with Community Comment</p>
           </div>
 
         </div>
