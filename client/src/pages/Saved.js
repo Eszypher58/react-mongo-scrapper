@@ -3,22 +3,6 @@ import SavedItem from "./SavedItem";
 import axios from "axios";
 import Note from "./../components/Note";
 
-/*
-const Saved = () => {
-
-    return (
-
-        <div>
-        <h1>Saved</h1>
-        </div>
-
-    )
-
-}
-*/
-
-
-
 class Saved extends Component {
 
     state = {
@@ -69,7 +53,7 @@ class Saved extends Component {
         e.preventDefault();
         let id = e.target.attributes.data_value.value
 
-        console.log("clicked " + id + " " + "note button");
+        //console.log("clicked " + id + " " + "note button");
 
         axios.get("/note/" + id).then(res => {
 
@@ -104,7 +88,7 @@ class Saved extends Component {
         let id = e.target.attributes.data_value.value;
         let body = this.state.text;
                 
-        console.log("clicked " + id + " " + "submit");
+        //console.log("clicked " + id + " " + "submit");
                 
         axios.post("/note/" + id, {body}).then(res => {
                 

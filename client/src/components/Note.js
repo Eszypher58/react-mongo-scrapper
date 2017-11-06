@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Note.css";
-import axios from "axios";
+//import axios from "axios";
 
 
 const Note = (props) => {
