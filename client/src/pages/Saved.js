@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SavedItem from "./SavedItem";
 import axios from "axios";
+import Note from "./../components/Note";
 
 /*
 const Saved = () => {
@@ -23,6 +24,9 @@ class Saved extends Component {
     state = {
 
         savedArticle: [],
+        modalIsShown: false,
+        articleNotes: null,
+        text: "",
 
     }
 
@@ -60,9 +64,85 @@ class Saved extends Component {
         
     }
 
+    handleNote = (e) => {
+
+        e.preventDefault();
+        let id = e.target.attributes.data_value.value
+
+        console.log("clicked " + id + " " + "note button");
+
+        axios.get("/note/" + id).then(res => {
+
+            console.log(res.data);
+            this.setState({articleNotes: res.data})
+            this.setState({modalIsShown: true})
+
+        }).catch(err => console.log(err));
+
+    };
+
+
+
+    handleCloseModal = (e) => {
+        
+        this.setState({modalIsShown: false})
+        
+    };
+
+    handleInputChange = (e) => {
+        
+        this.setState({text: e.target.value});
+        
+    }
+        
+    handleSubmitNote = (e) => {
+        
+        //this.setState({modalIsShown: false})
+        //handleCloseModal();
+
+        e.preventDefault();
+        let id = e.target.attributes.data_value.value;
+        let body = this.state.text;
+                
+        console.log("clicked " + id + " " + "submit");
+                
+        axios.post("/note/" + id, {body}).then(res => {
+                
+            console.log(res);
+
+            axios.get("/note/" + id).then(res => {
+                
+                console.log(res.data);
+                this.setState({articleNotes: res.data})
+                this.setState({modalIsShown: true})
+                
+            }).catch(err => console.log(err));
+            
+            
+        }).catch(err => console.log(err));
+                
+    }
+
+    removeNote = (e) => {
+
+        e.preventDefault();
+        let id = e.target.attributes.data_value.value;
+        axios.delete("/note/" + id).then(res => {
+
+            console.log(res);
+
+            this.setState({modalIsShown: false});
+            
+
+        }).catch(err => console.log(err));
+
+    }
+
     render() {
 
         return (
+
+            <div>
 
             <div className="container-fluid">
             
@@ -76,7 +156,7 @@ class Saved extends Component {
 
                             const {title, summary, date, img, url, _id} = item;
 
-                            return (<SavedItem title={title} summary={summary} date={date} img={img} url={url} _id={_id} remove={this.handleRemoveButton}/>)
+                            return (<SavedItem title={title} summary={summary} date={date} img={img} url={url} _id={_id} remove={this.handleRemoveButton} note={this.handleNote}/>)
 
                     })) : (<h3>No Saved Article</h3>) }
             
@@ -87,7 +167,9 @@ class Saved extends Component {
             
             </div>
 
+            <Note show={this.state.modalIsShown} close={this.handleCloseModal} submit={ this.handleSubmitNote } remove = {this.removeNote} inputHandle={this.handleInputChange} articlenote={ this.state.articleNotes }/>
 
+            </div>
 
         )
 

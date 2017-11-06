@@ -15,7 +15,7 @@ const SavedItem = (props) => {
                 <h4 className="media-heading">{props.title}</h4>
                 <h5>{props.date}</h5>
                 <p>{props.summary}</p>
-                <button className="btn btn-success noteButton" data_value={props._id}>Article Note</button>
+                <button className="btn btn-success noteButton" data_value={props._id} onClick={props.note}>Article Note</button>
                 <button className="btn btn-danger removeButton" data_value={props._id} onClick={props.remove}>Remove Article</button>
             </div>
         </div>

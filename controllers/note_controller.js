@@ -20,7 +20,14 @@ router.post("/note/:id", function(req, res){
 
     db.Comments.create(req.body).then(function(dbNote){
 
-        return db.Article.findOneAndUpdate({_id: objID}, { $push: { comment: dbNote._id } }, { new: true });
+        db.Article.findOneAndUpdate({_id: objID}, { $push: { comment: dbNote._id } }, { new: true }).then(function(err, doc){
+
+            res.json(doc);
+
+
+        });
+
+        //res.json("done");
 
 
     })

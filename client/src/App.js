@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-ro
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
+//import Note from "./components/Note";
 
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
       <Router>
       <div>
       <NavBar />
-
+      
 
       <Route exact path="/" component={ Home } />
       <Route exact path="/save" component={ Saved } />
