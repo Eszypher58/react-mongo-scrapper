@@ -116,7 +116,7 @@ class Saved extends Component {
             console.log(res);
 
             this.setState({modalIsShown: false});
-            
+            //this.setState({modalIsShown: true});
 
         }).catch(err => console.log(err));
 
