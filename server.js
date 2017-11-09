@@ -11,7 +11,7 @@ var db = require("./models");
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded( {extended: false} ));
 app.use(bodyParser.json());
